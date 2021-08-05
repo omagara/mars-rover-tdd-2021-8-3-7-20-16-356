@@ -54,4 +54,24 @@ class DemoTest {
         assertThat(marsRover.getRoverStatus().getDirection()).isEqualTo(expectedRoverStatus.getDirection());
     }
 
+
+    //    0 0 S  M => 0 -1 S
+    //    0 0 S  L =>  0 0 E
+    //    0 0 S  R => 0 0 W
+
+    @Test
+    void should_return_locationX_0_locationY_negative_1_direction_S_when_execute_command_given_locationX_0_locationY_0_direction_S_and_M() {
+        //given
+        MarsRover marsRover = new MarsRover(new RoverStatus(0,0,"S"));
+        RoverStatus expectedRoverStatus = new RoverStatus(0,-1,"S");
+
+        //when
+        marsRover.executeCommand("M");
+
+        //then
+        assertThat(marsRover.getRoverStatus().getLocationX()).isEqualTo(expectedRoverStatus.getLocationX());
+        assertThat(marsRover.getRoverStatus().getLocationY()).isEqualTo(expectedRoverStatus.getLocationY());
+        assertThat(marsRover.getRoverStatus().getDirection()).isEqualTo(expectedRoverStatus.getDirection());
+    }
+
 }
