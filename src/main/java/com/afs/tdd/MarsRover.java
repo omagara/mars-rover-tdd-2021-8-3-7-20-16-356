@@ -10,13 +10,16 @@ public class MarsRover {
         return roverStatus;
     }
 
-    public void executeCommand(String commands) {
-        for (String command : commands.split("")) {
+    public void executeCommand(String command) {
 
             if (command.equals("M")) move();
             if (command.equals("L")) turnLeft();
             if (command.equals("R")) turnRight();
+    }
 
+    public void executeCommands(String commands){
+        for (String singleCommand : commands.split("")) {
+            executeCommand(singleCommand);
         }
     }
 
